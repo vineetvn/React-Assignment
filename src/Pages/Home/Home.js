@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import {connect} from 'react-redux';
 
 import SelectedProducts from './SelectedProducts/SelectedProducts'
@@ -9,7 +8,7 @@ import SeasonSale from './SeasonSale/SeasonSale'
 import {Div, Div1, H3} from './styles';
 import BackgroundCarousel from './BackgroundCarousel/BackgroundCarousel';
 import ProductCarousel from './ProductCarousel/ProductCarousel'
-import { setProducts } from './actions'
+import { getProducts } from './actions'
 import Header from '../../Common Components/Header/Header';
 import Footer from '../../Common Components/Footer/Footer';
 import ColorSwitcher from '../../Common Components/ColorSwitcher/ColorSwitcher'
@@ -23,13 +22,7 @@ class Home extends Component {
     }
 
     componentDidMount () {
-        axios.get('https://react-sphene-app-80aae.firebaseio.com/.json')
-            .then(response => {
-                const products = response.data.HomeProducts;
-                this.setState({homeProducts: products}, () => {
-                    this.props.setProducts(this.state.homeProducts)
-                });
-            });
+        this.props.getProducts();
         window.scrollTo(0,0)
     }
     
@@ -59,7 +52,7 @@ class Home extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setProducts: (product) => dispatch(setProducts(product))
+        getProducts: () => dispatch(getProducts())
     }
 }
 

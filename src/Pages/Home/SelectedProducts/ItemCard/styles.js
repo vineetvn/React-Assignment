@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import {AiFillStar} from 'react-icons/ai'
 
 export const Li = styled.li `
     display: flex;
@@ -9,12 +11,16 @@ export const Li = styled.li `
     }
     
 `
-
+export const Star = styled(AiFillStar) `
+    color: yellow;
+    font-size: 24px;
+`
 export const Img = styled.img `
     flex: 0.3;
-    width: 100px;
-    height: 100px;
-
+    width: 80px;
+    height: 80px;
+    border: 1px solid ${props => props.theme.color.gray};
+    margin: 10px;
     @media only screen and (max-width: 900px) {
         display: block;
         width: 80px;
@@ -33,7 +39,7 @@ export const Div = styled.div `
     }
 `
 
-export const A = styled.a `
+export const A = styled(Link) `
     text-decoration: none;
     font-family: ${props => props.theme.fontFamily.Montserrat};
     color: ${props => props.theme.color.gray};

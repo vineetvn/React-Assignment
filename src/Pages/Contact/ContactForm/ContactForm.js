@@ -1,8 +1,7 @@
-import axios from 'axios';
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import {getSubmitDetails} from '../actions'
+import {getName, getMail, getSub, getMsg, getDetails} from '../actions'
 
 import { Div, H3, Div2, Div3, Input, StyledButton} from './styles';
 
@@ -33,7 +32,8 @@ class ContactForm extends Component {
                     },
                     value: '',
                     validate: {
-                        required: true
+                        required: true,
+                        email: true
                     },
                     valid: false,
                     filled: false
@@ -75,6 +75,11 @@ class ContactForm extends Component {
         if(rules.required) {
             isValid = value.trim() !== '' && isValid;
         }
+
+        if ( rules.email ) {
+            const pattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            isValid = pattern.test( value ) && isValid
+        }
         return isValid;
     }
     
@@ -106,18 +111,21 @@ class ContactForm extends Component {
             msg: this.state.contactForm.message.value
         }
 
-        this.setState({data: data}, () => {
-            console.log(this.state.data)
-        })
+        this.setState({data: data})
+        this.props.getDetails(data.name, data.email, data.sub, data.msg)
+
+        /*this.props.getName(data.name);
+        this.props.getMail(data.email);
+        this.props.getSub(data.sub);
+        this.props.getMsg(data.msg);
 
         axios.post('https://foodrecipejson.firebaseio.com/.json', data)
             .then(response => {
                 console.log(response)
-                this.props.history.push('/profile', data)
             })
             .catch(err => {
                 console.log(err)
-            })
+            })*/
     }
 
     render() {
@@ -165,7 +173,11 @@ const mapStateToProps = state => {
 
 const mapDisptchToProps = dispatch => {
     return {
-        getSubmitDetails: (details) => dispatch(getSubmitDetails(details))
+        getName: (data) => dispatch(getName(data)),
+        getMail: (data) => dispatch(getMail(data)),
+        getSub: (data) => dispatch(getSub(data)),
+        getMsg: (data) => dispatch(getMsg(data)),
+        getDetails: (name, mail, sub, msg) => dispatch(getDetails(name, mail, sub, msg))
     }
 }
 

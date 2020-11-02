@@ -16,7 +16,7 @@ class Profile extends Component {
                     elementType: 'input',
                     elementConfig: {
                         type: 'text',
-                        placeholder: 'UserName'
+                        placeholder: localStorage.getItem('userName')
                     },
                     value: ''
                 },
@@ -24,7 +24,7 @@ class Profile extends Component {
                     elementType: 'input',
                     elementConfig: {
                         type: 'email',
-                        placeholder: 'Email'
+                        placeholder: localStorage.getItem('email')
                     },
                     value: ''
                 }
@@ -39,7 +39,7 @@ class Profile extends Component {
                 config: this.state.submitForm[key]
             })
         }
-        console.log(this.props)
+        console.log(this.props.submitDetails)
         
         let form = formArray.map(ele => {
             return <div key={ele.id}>
@@ -54,17 +54,17 @@ class Profile extends Component {
         return (
             <div>
                 <Header />
-                <H2>Welcome</H2>
+                <H2>Welcome {localStorage.getItem('userName')}</H2>
                 <Div>
                     {form}
                 </Div>
                 <H2>Feedback:</H2>
-                {this.props.history.location.state ? 
+                {this.props.submitDetails.name ? 
                 <Div>
-                    <P>Name: {this.props.history.location.state.name}</P>
-                    <P>Email: {this.props.history.location.state.email}</P>
-                    <P>Subject: {this.props.history.location.state.sub}</P>
-                    <P>Message: {this.props.history.location.state.msg}</P>
+                    <P>Name: {this.props.submitDetails.name}</P>
+                    <P>Email: {this.props.submitDetails.email}</P>
+                    <P>Subject: {this.props.submitDetails.sub}</P>
+                    <P>Message: {this.props.submitDetails.msg}</P>
                 </Div> :
                 <P>You havent submitted feedbacks reagrding products !!</P>}
                 <H2>Purchases made:</H2>

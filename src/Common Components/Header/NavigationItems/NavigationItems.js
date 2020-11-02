@@ -1,7 +1,7 @@
 import React from 'react'
 
 import NavigationItem from './NavigationItem/NavigationItem'; 
-import {SearchIcon, StoreIcon, Ul, Badge, Div, Menu} from './style';
+import {SearchIcon, StoreIcon, Ul, Div, Menu} from './style';
 import {connect} from 'react-redux'
 
 function NavigationItems(props) {

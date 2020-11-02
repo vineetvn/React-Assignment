@@ -9,6 +9,7 @@ export const Div = styled.div `
 export const H2 = styled.h2 `
     font-family: ${props => props.theme.fontFamily.Montserrat};
     margin: 20px;
+    text-align: center;
 `
 
 export const P = styled.p `

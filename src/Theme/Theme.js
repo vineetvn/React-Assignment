@@ -49,7 +49,6 @@ export const theme = {
         footer: 'rgb(32,32,32)',
         fbButton: '#3b5998',
         white: '#fff',
-        black: 'rgb(0,0,0)',
         lightGrey: '#f6f6f6',
         red: 'rgb(227,55,55)',
         lightBlue: 'rgb(232, 240, 254)',

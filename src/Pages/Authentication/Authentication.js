@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import image from '../../Assets/Images/Authentication.jpg'
 import axios from 'axios'
 import {AuthWrapper, Image, Form, Img, Label, StyledInput, Button, Div} from './styles'
-import {getAuthDetails} from './action'
-import {connect} from 'react-redux'
 import { withRouter } from 'react-router'
 
 class Authentication extends Component {
@@ -123,13 +121,9 @@ class Authentication extends Component {
                     token: response.data.idToken, 
                     userId: response.data.localId
                 }), () => {
-                    const details = {
-                        userName: this.state.authForm.userName.value,
-                        token: this.state.token,
-                        email: this.state.authForm.email.value
-                    }
                     localStorage.setItem('user', response)
-                    this.props.getAuthDetails(details)
+                    localStorage.setItem('userName', this.state.authForm.userName.value)
+                    localStorage.setItem('email', this.state.authForm.email.value)
                     if(this.state.token !== null) {
                         this.props.history.push('/login')
                     }
@@ -202,10 +196,4 @@ class Authentication extends Component {
     }
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        getAuthDetails: (details) => dispatch(getAuthDetails(details))
-    }
-}
-
-export default connect(null, mapDispatchToProps)(withRouter(Authentication));
+export default (withRouter(Authentication));

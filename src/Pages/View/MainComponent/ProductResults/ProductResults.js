@@ -1,70 +1,74 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom';
 
-import {Div, OuterDiv, Range, Span, P} from './style';
+import {Div, OuterDiv, Range, Span, P, Input} from './style';
 import ProductCard from './ProductCard/ProductCard';
 import {setId} from './actions'
 
-class ProductResults extends Component {
-    constructor(props) {
+function ProductResults(props) {
+    
+    /*constructor(props) {
         super(props)
         this.state = {
             value: 200,
             filteredProducts: null,
             clicked: []
         }
-    }
-    sliderChangeHandler(e) {
-        let filtered;
-        this.setState({value: e.target.value}, () => {
-            filtered = this.props.relatedProducts.filter(prod => {
-                if(prod.price <= this.state.value) {
-                    return true;
-                }else return false;
-            })
-        this.setState({filteredProducts: filtered})
+    }*/
+
+    const [value, setValue] = useState(200);
+    const [filteredProducts, setFilteredproducts] = useState(null);
+    const [filtered , setFiltered] = useState(null);
+
+    useEffect(() => {
+        let filter = props.relatedProducts.filter(prod => {
+            if(prod.price <= value) {
+                return true;
+            }else return false;
         })
+        setFiltered(filter)
+    }, [props.relatedProducts, value])
+
+    const sliderChangeHandler = (e) => {
+        setValue(e.target.value)
+        setFilteredproducts(filtered)
     }
 
-    clickHandler(id) {
-        console.log('a')
-        this.setState({clicked: this.state.clicked.concat([id])}, () => {
-            console.log(this.state.clicked)
-            this.props.setId(id)
-        })
-    }
+    /*const clickHandler = (id) => {
+        let clickedArray = clicked.concat([id])
+        setClicked(clickedArray)
+        props.setId(id)
+    }*/
 
-    render() {
-        let products;
-        if(this.state.filteredProducts) {
-            products = this.state.filteredProducts.map((prod) => {
-                return <ProductCard key= {prod.id} image={prod.url} name={prod.name} price= {prod.price} clicked={() => this.clickHandler(prod.id)}/>
-            })
-        }else products = this.props.relatedProducts.map((prod) => {
-            return <ProductCard key= {prod.id} image={prod.url} name={prod.name} price= {prod.price} discount = {prod.offerprice} clicked={() => this.clickHandler(prod.id)}/>
+    let products;
+    if(filteredProducts) {
+        products = filteredProducts.map((prod) => {
+            return <ProductCard key= {prod.id} image={prod.url} name={prod.name} price= {prod.price} />
         })
+    }else products = props.relatedProducts.map((prod) => {
+        return <ProductCard key= {prod.id} image={prod.url} name={prod.name} price= {prod.price} discount = {prod.offerprice} />
+    })
 
-        return (
-            <OuterDiv>
-                <Div> 
-                    <div>
-                    <P>Showing 1-{this.props.relatedProducts.length} of 23 results</P>
-                    {!(this.props.locationState + 1) ? <Range>
-                                                    <Span>Filter your Products</Span>
-                                                    <input type="range" min="1" max="200" 
-                                                    value= {`${this.state.value}`} 
-                                                    onChange= {(e) =>this.sliderChangeHandler(e)}/>
-                                                    <span>${this.state.value}</span>
-                                                </Range> : null}
-                    </div>
-                    <Div>
-                        {products}
-                    </Div>
+    return (
+        <OuterDiv>
+            <Div> 
+                <div>
+                <P>Showing 1-{props.relatedProducts.length} of 23 results</P>
+                {!(props.locationState + 1) ? <Range>
+                                                <Span>Filter your Products</Span>
+                                                <Input type="range" min="1" max="200" 
+                                                value= {`${value}`} 
+                                                onChange= {(e) =>sliderChangeHandler(e)} />
+                                                <span> Price: $0 to ${value}</span>
+                                            </Range> : null}
+                </div>
+                <Div>
+                    {products}
                 </Div>
-            </OuterDiv>
-            )
-    }
+            </Div>
+        </OuterDiv>
+        )
 }
 
 const mapStateToProps = state => {

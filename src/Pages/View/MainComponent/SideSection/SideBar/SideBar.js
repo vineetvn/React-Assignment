@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, CheckOut, Details, Div, Img, Popular } from './styles'
+import { Div } from './styles'
 import { connect } from 'react-redux'
 import Card from './Card/Card';
 
@@ -8,22 +8,26 @@ export class SideBar extends Component {
     render() {
         let products = this.props.relatedProducts.filter(prod => {
             if(prod.id < 4) return true;
+            else return false;
         })
 
         let popular = products.map(prod => {
             return <Card img={prod.url} name={prod.name} price={prod.price} />
         })
 
-        let cart = products.filter(prod => {
+        console.log(this.props.productId)
+
+        /*let cart = products.filter(prod => {
             for(let id in this.props.productId) {
                 if(prod.id == id) {
                     return true;
-                }
-            } 
+                }else return false;
+            }
+            return 0;
         })
 
         let cartProducts = cart.map(prod => {
-            return <Card img={prod.url} name={prod.name} price={prod.price} cart/>
+            return <Card img={prod.url} name={prod.name} price={prod.price} cart />
         })
         let prices = cart.map(prod => {
             return (prod.price)
@@ -31,16 +35,15 @@ export class SideBar extends Component {
 
         let price = prices.reduce(function(x,y) {
             return x+y;
-        }, 0)
+        }, 0)*/
 
         return (
             <Div>
-                <h3>Shopping Cart</h3>
-                <CheckOut>
+                {/*<CheckOut>
                     <span>Count: {this.props.productId.length}</span>
                     {cartProducts}
                     <Button to='/cart' color={this.props.color}>CheckOut</Button>
-                </CheckOut>
+                </CheckOut>*/}
                 <div>
                     <h3>Popular Products</h3>
                     {popular}

@@ -6,3 +6,9 @@ export const setProducts = (data) => {
         data: data
     }
 }
+
+export const getProducts = () => {
+    return {
+        type: actionType.GET_PRODUCTS
+    }
+}

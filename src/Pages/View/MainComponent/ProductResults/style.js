@@ -17,12 +17,12 @@ export const MainSection = styled.div `
 
 export const Range = styled.div `
     margin: 15px 0;
-    font-family: ${props => props.theme.fontFamily.Montserrat}
+    font-family: ${props => props.theme.fontFamily.Montserrat};
 `
 
 export const P = styled.p `
     margin: 50px;
-    font-family: ${props => props.theme.fontFamily.Montserrat}
+    font-family: ${props => props.theme.fontFamily.Montserrat};
 `
 
 export const Div = styled.div `
@@ -39,4 +39,18 @@ export const Div = styled.div `
 
 export const Span = styled.span `
     margin: 0 50px;
+`
+
+export const Input = styled.input `
+    -webkit-appearance: none;
+    background: grey; 
+    outline: none;
+    height: 5px;
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 15px;
+        height: 15px;
+        background: black;
+        cursor: pointer;
+    }
 `

@@ -12,6 +12,7 @@ class FeaturedProducts extends Component {
     }
 
     render() {
+        console.log(this.props.homeProducts)
         const products = this.props.homeProducts.map((product) => {
             return <Product image={product.url} name={product.name} key= {product.id}
             type={ product.id === 0 ? 'main' : null} clicked={() => this.clickHandler(product.id)}/>

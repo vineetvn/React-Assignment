@@ -4,11 +4,10 @@ import {connect} from 'react-redux'
 
 function ProductType(props) {
     let name;
-    let product = props.relatedProducts.filter(prod => {
-        if(prod.id == 0) name = prod.name;
+    props.relatedProducts.filter(prod => {
+        if(prod.id === 0) name = prod.name;
+        return 0;
     })
-
-    console.log(name)
     return (
         <Div>
             <h2>Welcome To The Shop Section</h2>

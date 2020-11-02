@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import image from '../../Assets/Images/Authentication.jpg'
 import axios from 'axios'
 import {AuthWrapper, Image, Form, Img, Label, StyledInput, Button, Div} from './styles'
-import {getAuthDetails} from './action'
-import {connect} from 'react-redux'
-import { withRouter } from 'react-router'
 
 class Login extends Component {
 
@@ -93,11 +90,8 @@ class Login extends Component {
                     token: response.data.idToken, 
                     userId: response.data.localId
                 }), () => {
-                    const details = {
-                        token: this.state.token,
-                        email: this.state.authForm.email.value
-                    }
                     localStorage.setItem('user', response)
+                    localStorage.setItem('email', this.state.authForm.email.value)
                     if(this.state.token !== null) {
                         this.props.history.push('/home')
                     }
