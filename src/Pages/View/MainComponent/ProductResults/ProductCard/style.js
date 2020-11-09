@@ -8,7 +8,7 @@ export const Div = styled.div `
     height: 320px;
     width: 250px;
     border: 1px solid ${props => props.theme.color.silverGrey};
-    font-family: ${props => props.theme.fontFamily.Montserrat}
+    font-family: ${props => props.theme.fontFamily.Montserrat};
     box-sizing: border-box;
     text-align: center;
     position: relative;
@@ -20,8 +20,15 @@ export const Div = styled.div `
 
     @media only screen and (max-width: 685px) {
         height: 300px;
-        width: 100%;
+        width: 70%;
+        margin: 15px auto;
     } 
+
+    @media only screen and (max-width: 450px) {
+        height: 300px;
+        width: 90%;
+        margin: 15px auto;
+    }
 `
 
 export const ShoppingCart = styled(HiShoppingCart) `

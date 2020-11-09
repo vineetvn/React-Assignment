@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {Li, StyledLink} from './styles';
 
 function NavigationItem(props) {
-    console.log(props.color)
     return (
     <Li><StyledLink to={props.link} color={props.color}>{props.children}</StyledLink></Li>
     )

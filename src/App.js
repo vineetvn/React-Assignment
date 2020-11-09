@@ -7,12 +7,12 @@ import Router from './Router/Router';
 import {store} from './Store/Store';
 import {withRouter} from 'react-router-dom'
 
-function App() {
+function App(props) {
   return (
     <Provider store= {store}>
-        <div>
+        <>
           <Router />
-        </div>
+        </>
     </Provider>
   );
 }

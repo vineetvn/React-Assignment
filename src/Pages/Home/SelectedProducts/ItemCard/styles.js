@@ -12,8 +12,12 @@ export const Li = styled.li `
     
 `
 export const Star = styled(AiFillStar) `
-    color: yellow;
-    font-size: 24px;
+    color: #ffbf00;
+    font-size: 20px;
+
+    @media only screen and (max-width: 350px) {
+        font-size: 14px;
+    }
 `
 export const Img = styled.img `
     flex: 0.3;

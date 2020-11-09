@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import {getName, getMail, getSub, getMsg, getDetails} from '../actions'
 
-import { Div, H3, Div2, Div3, Input, StyledButton} from './styles';
+import { Div, H3, Div2, Div3, Input, StyledButton, H5} from './styles';
 
 class ContactForm extends Component {
     constructor(props) {
@@ -64,9 +64,10 @@ class ContactForm extends Component {
                     valid: false,
                     filled: false
                 },
-                isFormValid: false
             },
-            data: []
+            isFormValid: false,
+            data: [],
+            isSubmit: null
         }
     }
 
@@ -95,11 +96,15 @@ class ContactForm extends Component {
         formElement.filled = true;
         updatedData[id] = formElement;
 
-        let formValidity = true;
+        let formValidity = false;
         for(let id in updatedData) {
-            formValidity = updatedData[id].valid && formValidity;
+            if(updatedData[id].valid) {
+                formValidity = true;
+            }
         }
-        this.setState({contactForm: updatedData, isFormValid: formValidity})
+        console.log(formValidity)
+        this.setState({contactForm: updatedData, isFormValid: formValidity}, () => {
+        })
     }
 
     submitHandler = (e) => {
@@ -113,19 +118,9 @@ class ContactForm extends Component {
 
         this.setState({data: data})
         this.props.getDetails(data.name, data.email, data.sub, data.msg)
-
-        /*this.props.getName(data.name);
-        this.props.getMail(data.email);
-        this.props.getSub(data.sub);
-        this.props.getMsg(data.msg);
-
-        axios.post('https://foodrecipejson.firebaseio.com/.json', data)
-            .then(response => {
-                console.log(response)
-            })
-            .catch(err => {
-                console.log(err)
-            })*/
+        if(this.state.data) {
+            this.setState({isSubmit: true})
+        }
     }
 
     render() {
@@ -151,6 +146,7 @@ class ContactForm extends Component {
             <Div>
                 <H3>Contact Form</H3>
                 <form onSubmit= {(e) => this.submitHandler(e)}>
+                    {(this.state.isSubmit && this.state.isFormValid) ? <H5>The Form is Submitted. You can view it in your Profile</H5> : null}
                     <Div2>
                         {inputs[0]}
                         {inputs[1]}

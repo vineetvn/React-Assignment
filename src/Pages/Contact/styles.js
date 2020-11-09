@@ -1,12 +1,18 @@
 import styled from 'styled-components';
-import OfficeImg from '../../Assets/Images/our office.jpg'
+import OfficeImg from '../../Assets/Images/our office.jpg';
+
+
 export const Div = styled.div `
     display: flex;
     margin: 50px 100px;
 
     @media only screen and (max-width: 900px) {
         flex-direction: column;
-        margin: 50px 70px;;
+        margin: 50px 70px;
+    }
+
+    @media only screen and (max-width: 500px) {
+        margin: 50px 30px;
     }
 `
 

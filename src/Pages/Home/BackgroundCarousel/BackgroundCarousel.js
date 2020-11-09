@@ -18,7 +18,6 @@ class BackgroundCarousel extends Component {
 
     }
     render() {
-        console.log(this.props)
         const settings = {
             dots: true,
             infinite: true,

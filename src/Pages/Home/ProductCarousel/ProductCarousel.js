@@ -47,32 +47,32 @@ class ProductCarousel extends Component {
         return (
             <SliderWrapper>
                 <Slider {...settings}>
-                    <Div>
+                    <Div className='slide'>
                         <Img src={image1}></Img>
                         <div>Cap</div>
                         <div><Span>$10</Span> <Price>$6</Price></div>
                     </Div>
-                    <Div>
+                    <Div className='slide'>
                         <Img src={image2}></Img>
                         <div>Watch</div>
                         <div><Price>$179</Price></div>
                     </Div>
-                    <Div>
+                    <Div className='slide'>
                         <Img src={image3}></Img>
                         <div>SunGlasses</div>
                         <div><Span>$29</Span> <Price>$25</Price></div>
                     </Div>
-                    <Div>
+                    <Div className='slide'>
                         <Img src={image4}></Img>
                         <div>Wallet</div>
                         <div><Span>$79</Span> <Price>$69</Price></div>
                     </Div>
-                    <Div>
+                    <Div className='slide'>
                         <Img src={image5}></Img>
                         <div>Shirt</div>
                         <div><Price>$19</Price></div>
                     </Div>
-                    <Div>
+                    <Div className='slide'>
                         <Img src={image6}></Img>
                         <div>T-Shirt</div>
                         <div><Span>$19</Span> <Price>$14</Price></div>

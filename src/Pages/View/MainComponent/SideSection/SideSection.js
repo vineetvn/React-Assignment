@@ -5,7 +5,7 @@ import ProductType from './ProductType/ProductType';
 import SideBar from './SideBar/SideBar';
 import {ImageWrapper, Div} from './style';
 
-function SideSection(props) {
+export function SideSection(props) {
     return (
         props.locationState + 1 ? <Div>
             <ProductType />

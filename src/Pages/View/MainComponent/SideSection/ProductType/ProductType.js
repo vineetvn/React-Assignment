@@ -12,7 +12,7 @@ function ProductType(props) {
         <Div>
             <h2>Welcome To The Shop Section</h2>
             {props.locationState + 1 ? <h3>{name} Section</h3> : null}
-            <p>Return back to  <StyledLink href='/home'>Home</StyledLink></p>
+            <p>Return back to  <StyledLink to='/home'>Home</StyledLink></p>
         </Div>
     )
 }

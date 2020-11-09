@@ -18,6 +18,16 @@ const H3 = styled.h3 `
         margin-left: 0
     }
 `
+
+const H5 = styled.h5 `
+    display: inline-block;
+    margin-left: 20px;
+    padding: 10px;
+    color: ${props => (props.theme.color.green)};
+    font-family: ${props => (props.theme.fontFamily.Montserrat)};
+    font-weight: ${props => (props.theme.fontWeight.bold)};
+`
+
 const Div2 = styled.div `
     width: 100%;
     display: flex;
@@ -64,4 +74,4 @@ const StyledButton = styled.button `
     }
 `
 
-export {Div, H3, Div2, Div3, Input, StyledButton};
+export {Div, H3, Div2, Div3, Input, StyledButton, H5};

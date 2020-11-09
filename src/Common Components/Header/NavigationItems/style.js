@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {FaSearch} from 'react-icons/fa';
 import {MdLocalGroceryStore} from 'react-icons/md';
-import {FiMenu} from 'react-icons/fi';
+import {CgProfile} from 'react-icons/cg';
 
 const Ul = styled.ul`
     margin: 0;
@@ -32,9 +32,10 @@ export const StoreIcon = styled(MdLocalGroceryStore) `
     line-height: ${props => (props.theme.fontSize.small)};
 `
 
-export const Menu = styled(FiMenu) `
-    font-size: ${props => (props.theme.fontSize.small)};
+export const Menu = styled(CgProfile) `
+    font-size: ${props => (props.theme.fontSize.medium)};
     line-height: ${props => (props.theme.fontSize.small)};
+    display: flex;
 `
 
 export const Div = styled.div `

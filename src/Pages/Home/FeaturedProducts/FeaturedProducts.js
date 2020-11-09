@@ -5,14 +5,13 @@ import {connect} from 'react-redux';
 import Product from './Proucts/Products';
 import {Div, Div1, Div2} from './styles'
 
-class FeaturedProducts extends Component {
+export class FeaturedProducts extends Component {
 
     clickHandler(id) {
         this.props.history.push({pathname:'/view', state:id})
     }
 
     render() {
-        console.log(this.props.homeProducts)
         const products = this.props.homeProducts.map((product) => {
             return <Product image={product.url} name={product.name} key= {product.id}
             type={ product.id === 0 ? 'main' : null} clicked={() => this.clickHandler(product.id)}/>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import image from '../../Assets/Images/Authentication.jpg'
 import axios from 'axios'
-import {AuthWrapper, Image, Form, Img, Label, StyledInput, Button, Div} from './styles'
+import {AuthWrapper, Image, Form, Img, Label, StyledInput, Button, Div, InputDiv, Error} from './styles'
 import { withRouter } from 'react-router'
 
 class Authentication extends Component {
@@ -69,7 +69,8 @@ class Authentication extends Component {
             isSignedUp: true,
             token: null,
             userId: null,
-            error: false
+            hidePassword: false,
+            error: false,
         }
     }
 
@@ -125,7 +126,7 @@ class Authentication extends Component {
                     localStorage.setItem('userName', this.state.authForm.userName.value)
                     localStorage.setItem('email', this.state.authForm.email.value)
                     if(this.state.token !== null) {
-                        this.props.history.push('/login')
+                        this.props.history.push({pathname:'/login', state: this.state.token})
                     }
                 }
             )
@@ -156,11 +157,10 @@ class Authentication extends Component {
 
         let error = null;
         if(this.state.error) {
-            error = <p>Please enter valid email and password(minimum 6 digits)</p>
+            error = <Error>Please enter valid email and password(minimum 6 digits)</Error>
         }
         let form = formArray.map(ele => {
-            console.log(ele.config.valid)
-            return <div key={ele.id}>
+            return <InputDiv key={ele.id}>
                         <Label>{ele.config.elementConfig.placeholder}</Label>
                         <StyledInput
                         key={ele.id}
@@ -170,8 +170,7 @@ class Authentication extends Component {
                         invalid = {!ele.config.valid}
                         shouldValidate= {ele.config.validate}
                         filled = {ele.config.filled}
-                        change= {(event) => this.inputHandler(event, ele.id)} />
-                    </div>
+                        change= {(event) => this.inputHandler(event, ele.id)} /></InputDiv>
         })
 
         
@@ -185,7 +184,7 @@ class Authentication extends Component {
                         {form}
                         {error}
                         <Div>
-                            <Button type='submit'>Submit</Button>
+                            <Button type='submit'>Sign Up</Button>
                             <Button onClick={() => this.clickHandler()}>Log In</Button>
                         </Div>
                     </form>  

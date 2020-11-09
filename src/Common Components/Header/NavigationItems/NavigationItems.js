@@ -1,7 +1,7 @@
 import React from 'react'
 
 import NavigationItem from './NavigationItem/NavigationItem'; 
-import {SearchIcon, StoreIcon, Ul, Div, Menu} from './style';
+import {Ul, Div, Menu} from './style';
 import {connect} from 'react-redux'
 
 function NavigationItems(props) {
@@ -11,8 +11,6 @@ function NavigationItems(props) {
             <NavigationItem link="/view">SHOP</NavigationItem>
             <NavigationItem link="/contact">CONTACT</NavigationItem>
             <NavigationItem link="/profile">PROFILE</NavigationItem>
-            <Div><SearchIcon onClick={props.clicked}/></Div>
-            <Div><StoreIcon /></Div>
             <Div><Menu onClick={props.click}/></Div>
         </Ul>
     )

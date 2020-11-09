@@ -2,24 +2,16 @@ import React, { useEffect, useState } from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom';
 
-import {Div, OuterDiv, Range, Span, P, Input} from './style';
+import {Div, OuterDiv, Range, Span, P, Input, Search, Filter, Div1} from './style';
 import ProductCard from './ProductCard/ProductCard';
 import {setId} from './actions'
 
 function ProductResults(props) {
-    
-    /*constructor(props) {
-        super(props)
-        this.state = {
-            value: 200,
-            filteredProducts: null,
-            clicked: []
-        }
-    }*/
 
     const [value, setValue] = useState(200);
     const [filteredProducts, setFilteredproducts] = useState(null);
     const [filtered , setFiltered] = useState(null);
+    const [searchValue, setSearchValue] = useState('');
 
     useEffect(() => {
         let filter = props.relatedProducts.filter(prod => {
@@ -30,16 +22,30 @@ function ProductResults(props) {
         setFiltered(filter)
     }, [props.relatedProducts, value])
 
+    useEffect(() => {
+        let searchFilter = props.relatedProducts.filter(prod => {
+            let name = prod.name.toLowerCase();
+            name = name.trim();
+            if(name.includes(searchValue)) {
+                return true;
+            }else return false;
+        })
+        setFiltered(searchFilter)
+    }, [props.relatedProducts, searchValue])
+
     const sliderChangeHandler = (e) => {
         setValue(e.target.value)
         setFilteredproducts(filtered)
     }
 
-    /*const clickHandler = (id) => {
-        let clickedArray = clicked.concat([id])
-        setClicked(clickedArray)
-        props.setId(id)
-    }*/
+    const changeHandler = (e) => {
+        e.preventDefault();
+        setSearchValue(e.target.value.toLowerCase().trim())
+        if(e.target.value) {
+            setFilteredproducts(filtered)
+        }else setFilteredproducts(props.relatedProducts)
+
+    }
 
     let products;
     if(filteredProducts) {
@@ -52,21 +58,30 @@ function ProductResults(props) {
 
     return (
         <OuterDiv>
-            <Div> 
-                <div>
-                <P>Showing 1-{props.relatedProducts.length} of 23 results</P>
+            <Div1> 
+                <Div1>
+                <P>Showing 1-{products.length} of 23 results</P>
                 {!(props.locationState + 1) ? <Range>
-                                                <Span>Filter your Products</Span>
-                                                <Input type="range" min="1" max="200" 
-                                                value= {`${value}`} 
-                                                onChange= {(e) =>sliderChangeHandler(e)} />
-                                                <span> Price: $0 to ${value}</span>
+                                                <Filter>
+                                                    <Span>Filter :</Span>
+                                                    <Input type="range" min="1" max="200" 
+                                                    value= {`${value}`} 
+                                                    onChange= {(e) =>sliderChangeHandler(e)} />
+                                                    <span>$0 to ${value}</span>
+                                                </Filter>
+                                                <div>
+                                                    <Span>Search :</Span>
+                                                    <Search type='input' 
+                                                    placeholder='Search your Products'
+                                                    value={`${searchValue}`}
+                                                    onChange={(e) => changeHandler(e)} />
+                                                </div>
                                             </Range> : null}
-                </div>
+                </Div1>
                 <Div>
                     {products}
                 </Div>
-            </Div>
+            </Div1>
         </OuterDiv>
         )
 }

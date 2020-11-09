@@ -47,11 +47,7 @@ export const Div = styled.div `
     display: flex;
     justify-content: space-around;
 `
-export const ShowPassword = styled.div `
-    float: right;
-    color: ${props => props.theme.backgroundColor.green};
 
-`
 
 export const Button = styled.button `
     outline: none;
@@ -72,4 +68,19 @@ export const A = styled.div `
     padding: 20px 50px;
     border-radius: 30px;
     background-color: ${props => props.theme.backgroundColor.lightGrey};
+`
+
+export const InputDiv = styled.div `
+    position: relative;
+`
+
+export const ShowPassword = styled.div `
+    position: absolute;
+    top: 65%;
+    right: 5%;
+`
+
+export const Error = styled.p `
+    color: ${props => props.theme.color.red};
+    font-family: ${props => props.theme.fontFamily.Lato};
 `

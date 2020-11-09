@@ -12,38 +12,11 @@ export class SideBar extends Component {
         })
 
         let popular = products.map(prod => {
-            return <Card img={prod.url} name={prod.name} price={prod.price} />
+            return <Card key={prod.id} img={prod.url} name={prod.name} price={prod.price} />
         })
-
-        console.log(this.props.productId)
-
-        /*let cart = products.filter(prod => {
-            for(let id in this.props.productId) {
-                if(prod.id == id) {
-                    return true;
-                }else return false;
-            }
-            return 0;
-        })
-
-        let cartProducts = cart.map(prod => {
-            return <Card img={prod.url} name={prod.name} price={prod.price} cart />
-        })
-        let prices = cart.map(prod => {
-            return (prod.price)
-        })
-
-        let price = prices.reduce(function(x,y) {
-            return x+y;
-        }, 0)*/
 
         return (
             <Div>
-                {/*<CheckOut>
-                    <span>Count: {this.props.productId.length}</span>
-                    {cartProducts}
-                    <Button to='/cart' color={this.props.color}>CheckOut</Button>
-                </CheckOut>*/}
                 <div>
                     <h3>Popular Products</h3>
                     {popular}

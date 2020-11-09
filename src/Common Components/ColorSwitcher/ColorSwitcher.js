@@ -30,7 +30,6 @@ class ColorSwitcher extends Component {
     render() {
         let switcher = null;
 
-        console.log(this.props)
         if(this.state.clicked) {
             switcher =
                             <div>

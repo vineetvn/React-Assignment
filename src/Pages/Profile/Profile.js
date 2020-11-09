@@ -1,26 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {Label, StyledInput} from '../Authentication/styles'
-import { Div, H2, P, Span } from './styles'
+import { Div, H2, P} from './styles'
 import Header from '../../Common Components/Header/Header';
 import Footer from '../../Common Components/Footer/Footer';
-import { Link } from 'react-router-dom';
 
-class Profile extends Component {
+export class Profile extends Component {
     constructor(props) {
         super(props)
     
         this.state = {
             submitForm: {
-                userName: {
+                UserName: {
                     elementType: 'input',
                     elementConfig: {
                         type: 'text',
-                        placeholder: localStorage.getItem('userName')
+                        placeholder: localStorage.getItem('userName') || 'User Name'
                     },
                     value: ''
                 },
-                email: {
+                Email: {
                     elementType: 'input',
                     elementConfig: {
                         type: 'email',
@@ -43,7 +42,7 @@ class Profile extends Component {
         
         let form = formArray.map(ele => {
             return <div key={ele.id}>
-                        <Label>{ele.config.elementConfig.placeholder}</Label>
+                        <Label>{ele.id}</Label>
                         <StyledInput
                         key={ele.id}
                         elementType= {ele.config.elementType} 
@@ -67,9 +66,6 @@ class Profile extends Component {
                     <P>Message: {this.props.submitDetails.msg}</P>
                 </Div> :
                 <P>You havent submitted feedbacks reagrding products !!</P>}
-                <H2>Purchases made:</H2>
-                <P>You haven't purchased any items !!</P>
-                <Span>Go back to <Link to ='/home'>HOME</Link></Span>
                 <Footer />
             </div>
         )

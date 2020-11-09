@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import image from '../../Assets/Images/Authentication.jpg'
 import axios from 'axios'
-import {AuthWrapper, Image, Form, Img, Label, StyledInput, Button, Div} from './styles'
+import {AuthWrapper, Image, Form, Img, Label, StyledInput, Button, Div, Error} from './styles'
+import { H5 } from '../Contact/ContactForm/styles'
 
 class Login extends Component {
 
@@ -124,7 +125,7 @@ class Login extends Component {
 
         let error = null;
         if(this.state.error) {
-            error = <p>Please enter valid email and password(minimum 6 digits)</p>
+            error = <Error>Please enter valid email and password(minimum 6 digits)</Error>
         }
         let form = formArray.map(ele => {
             console.log(ele.config.valid)
@@ -147,11 +148,12 @@ class Login extends Component {
                     <Img src={image} />
                 </Image>
                 <Form>
+                    {this.props.location.state ? <H5>SignUp is Successful!!</H5>: null}
                     <form onSubmit = {this.submitHandler}>
                         {form}
                         {error}
                         <Div>
-                            <Button type='submit'>Submit</Button>
+                            <Button type='submit'>Log In</Button>
                             <Button onClick={() => this.clickHandler()}>Sign Up</Button>
                         </Div>
                     </form>  
