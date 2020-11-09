@@ -41,11 +41,9 @@ class View extends Component {
     render() {
         return (
             <div>
-                <Header />
                 <ColorSwitcher />
                 <ShopBackground />
                 <MainComponent />
-                <Footer />
             </div>
         )
     }

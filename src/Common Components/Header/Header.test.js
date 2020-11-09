@@ -7,7 +7,7 @@ import { SideMenu } from './styles';
 
 configure({adapter: new Adapter()});
 
-describe('SideView', () => {
+describe('Header', () => {
     it('should render a modal when the hamburg menu is clicked', () => {
         const wrapper = shallow(<Header menuClicked/>)
         expect(wrapper.find(SideMenu));

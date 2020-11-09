@@ -32,7 +32,6 @@ class Home extends Component {
     render() {
         return (
             <Div>
-                <Header />
                 <BackgroundCarousel />
                 
                 <ColorSwitcher />
@@ -44,7 +43,6 @@ class Home extends Component {
                 <Div1>
                 <SelectedProducts />
                 </Div1>
-                <Footer />
             </Div>
         )
     }

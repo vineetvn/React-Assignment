@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "sphene-react-app"
+    "default": "sphene-react-app",
+    "/": "sphene-react",
+    "sphene": "sphene-react"
   }
 }

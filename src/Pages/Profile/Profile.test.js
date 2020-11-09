@@ -7,7 +7,7 @@ import { P, Div } from './styles';
 
 configure({adapter: new Adapter()});
 
-describe('SideView', () => {
+describe('profile', () => {
     it('should render a div with feedback details', () => {
         const wrapper = shallow(<Profile submitDetails/>)
         expect(wrapper.find(Div));

@@ -14,7 +14,6 @@ export default class Contact extends Component {
     render() {
         return (
             <div>
-                <Header />
                 <ColorSwitcher />
                 <Location>
                     <LocImage src={locationImage} alt=''></LocImage>
@@ -29,7 +28,6 @@ export default class Contact extends Component {
                     <ContactDetails />
                     <ContactForm />
                 </Div>
-                <Footer />
             </div>
         )
     }

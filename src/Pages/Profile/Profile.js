@@ -52,7 +52,6 @@ export class Profile extends Component {
         })
         return (
             <div>
-                <Header />
                 <H2>Welcome {localStorage.getItem('userName')}</H2>
                 <Div>
                     {form}
@@ -66,7 +65,6 @@ export class Profile extends Component {
                     <P>Message: {this.props.submitDetails.msg}</P>
                 </Div> :
                 <P>You havent submitted feedbacks reagrding products !!</P>}
-                <Footer />
             </div>
         )
     }
