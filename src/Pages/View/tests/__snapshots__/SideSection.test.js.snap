@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideSection deep render should render deeply 1`] = `ReactWrapper {}`;
+
+exports[`SideView should render the component 1`] = `ShallowWrapper {}`;

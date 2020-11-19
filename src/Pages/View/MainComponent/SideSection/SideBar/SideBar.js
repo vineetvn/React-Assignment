@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Div } from './styles'
+import { Div, H3 } from './styles'
 import { connect } from 'react-redux'
 import Card from './Card/Card';
 
@@ -17,10 +17,8 @@ export class SideBar extends Component {
 
         return (
             <Div>
-                <div>
-                    <h3>Popular Products</h3>
-                    {popular}
-                </div>
+                <H3>Popular Products</H3>
+                {popular}
             </Div>
         )
     }

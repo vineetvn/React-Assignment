@@ -15,14 +15,13 @@ export default class Card extends Component {
     }
     render() {
         return (
-            !this.state.clicked ? <Div>
-                <Img src= {require(`../../../../../../Assets/Images/${this.props.img}`)}></Img>
+            <Div>
+                <Img src= {`../../../../../../Assets/Images/${this.props.img}`}></Img>
                 <Details>
                     <h4>{this.props.name}</h4>
                     <p>$ {this.props.price}</p>
-                    {this.props.cart ? <button onClick= {() => this.clickHandler()}>remove</button> : null}
                 </Details>
-            </Div> : null
+            </Div>
         )
     }
 }

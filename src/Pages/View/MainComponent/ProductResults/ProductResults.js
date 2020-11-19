@@ -6,7 +6,7 @@ import {Div, OuterDiv, Range, Span, P, Input, Search, Filter, Div1} from './styl
 import ProductCard from './ProductCard/ProductCard';
 import {setId} from './actions'
 
-function ProductResults(props) {
+export function ProductResults(props) {
 
     const [value, setValue] = useState(200);
     const [filteredProducts, setFilteredproducts] = useState(null);

@@ -2,7 +2,7 @@ import React from 'react'
 import { Div, StyledLink } from './style'
 import {connect} from 'react-redux'
 
-function ProductType(props) {
+export function ProductType(props) {
     let name;
     props.relatedProducts.filter(prod => {
         if(prod.id === 0) name = prod.name;
